@@ -1,7 +1,15 @@
 const users = [
 {
   username: 'user1',
-  email: "user1@test.com"
+  email: "user1@test.com",
+  friends: [{
+    username: 'user4',
+    email: 'user4@example.com'
+  },
+  {
+    username: 'user2',
+  email: 'user2@test.com'
+  }],
 },
   {
     username: 'user2',
@@ -15,6 +23,7 @@ const users = [
     username: 'user4',
     email: 'user4@example.com'
   }
+
 ];
 
 const thoughts = [
@@ -36,7 +45,11 @@ const thoughts = [
   },
   {
     thoughtText: 'I need to lose like 400 lbs',
-    username: 'user1'
+    username: 'user1',
+    reactions: [{
+        reactionbody: 'I disagree!',
+        username: 'user4'
+      }]
   }
 
 ];
@@ -53,4 +66,4 @@ const reactions = [
 ];
 
 // Export the data for use in seed.js
-module.exports = users, thoughts, reactions
+module.exports = { users, thoughts, reactions}

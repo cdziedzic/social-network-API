@@ -1,9 +1,6 @@
 const connection = require('../config/connection');
 const { User, Video, Thought } = require('../models');
-const users = require('./data');
-const thoughts = require('./data');
-const reactions = require('./data');
-  
+const {users, thoughts, reactions} = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -12,7 +9,7 @@ connection.once('open', async () => {
   // Delete the collections if they exist
   let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
   if (thoughtCheck.length) {
-    await connection.dropCollection('videos');
+    await connection.dropCollection('thoughts');
   }
 
   let userCheck = await connection.db.listCollections({ name: 'users' }).toArray();
