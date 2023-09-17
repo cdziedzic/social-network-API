@@ -2,14 +2,6 @@ const users = [
 {
   username: 'user1',
   email: "user1@test.com",
-  friends: [{
-    username: 'user4',
-    email: 'user4@example.com'
-  },
-  {
-    username: 'user2',
-  email: 'user2@test.com'
-  }],
 },
   {
     username: 'user2',
@@ -46,10 +38,6 @@ const thoughts = [
   {
     thoughtText: 'I need to lose like 400 lbs',
     username: 'user1',
-    reactions: [{
-        reactionbody: 'I disagree!',
-        username: 'user4'
-      }]
   }
 
 ];

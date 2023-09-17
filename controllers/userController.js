@@ -12,8 +12,6 @@ module.exports = {
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
-        .select('-__v');
-
       if (!user) {
         return res.status(404).json({ message: 'No user with that ID' });
       }
@@ -64,7 +62,7 @@ module.exports = {
     try {
       const dbUserData = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $set: {friends: req.params.friendId}},
+        { $addToSet: {friends: req.params.friendId}},
         { runValidators: true, new: true }
       );
       res.json(dbUserData);

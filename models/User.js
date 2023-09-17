@@ -14,10 +14,10 @@ const userSchema = new Schema(
       required: true,
       unique: true,
       validate: {
-      validator: function(value) {
-        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
-      },
-      message: props =>  `${props.value} is not a valid email address!`
+        validator: function (value) {
+          return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+        },
+        message: props => `${props.value} is not a valid email address!`
       }
     },
     thoughts: [
@@ -32,15 +32,20 @@ const userSchema = new Schema(
         ref: 'user',
       },
     ],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
   }
 );
 
 // Create a virtual property that counts the amount of friends the user has
 userSchema
   .virtual('friendCount')
-  // Getter
   .get(function () {
-    return `${this.friends.length}`;
+    return this.friends.length;
   })
 
 // Initialize our User model
