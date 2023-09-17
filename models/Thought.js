@@ -14,6 +14,10 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    username: {
+      type: String,
+      required: true
+    },
    reactions: [Reaction],
   },
   {
@@ -24,7 +28,7 @@ const thoughtSchema = new Schema(
   }
 );
 
-// Create a virtual property reactions that gets the amount of response per video
+// Create a virtual property reactions that gets the amount of reactions per thought
 thoughtSchema
   .virtual('reactionCount')
   // Getter
