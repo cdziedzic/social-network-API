@@ -9,12 +9,11 @@ Github: https://github.com/cdziedzic/social-network-API
 
 ### Screenshot of content
 
-![Alt text] ![Alt text](image.png)
+![Alt text](image.png)
 
 ## Table of contents
 
 - [Installation](#installation)
-- [Usage](#usage)
 - [License](#license)
 - [Questions](#questions)
 
