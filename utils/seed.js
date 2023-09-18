@@ -19,22 +19,8 @@ connection.once('open', async () => {
 
 
   await User.collection.insertMany(users);
-  // let userData = await User.collection.find({})
-  // console.log(userData);
-
-
-  let userIdArr = users.map(user=> (user._id))
-  console.log(userIdArr);
-
-  for (let i = 0; i < thoughts.length; i++) {
-    
-    thoughts[i][`userId`] = userIdArr[i]
-    console.log(userIdArr);
-    console.log(thoughts)
-  }
-
   await Thought.collection.insertMany(thoughts);
-  // loop through the saved videos, for each video we need to generate a video response and insert the video responses
+  
   console.table(users);
   console.table(thoughts);
   console.info('Seeding complete! 🌱');

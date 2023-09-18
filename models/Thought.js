@@ -13,7 +13,10 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: function (createdAt) {
+        return formatDate(createdAt)
     },
+  },
     username: {
       type: String,
       required: true
@@ -23,19 +26,31 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      getters: true 
     },
     id: false,
   }
 );
 
-// Create a virtual property reactions that gets the amount of reactions per thought
+// Create a virtual property that gets the amount of reactions per thought
 thoughtSchema
   .virtual('reactionCount')
   // Getter
   .get(function () {
     return this.reactions.length;
   });
-
+//format date on query
+  function formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+  
+    return `${month}-${day}-${year} ${hours}:${minutes}:${seconds}`;
+  }
+  
 // Initialize the model
 const Thought = model('thought', thoughtSchema);
 

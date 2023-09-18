@@ -26,6 +26,8 @@ module.exports = {
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
+      
+      //append thought to user
       const user = await User.findOneAndUpdate(
         { _id: req.body.userId },
         { $addToSet: { thoughts: thought._id } },
@@ -44,6 +46,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  
+  //update a thought
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -93,7 +97,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove video response
+  // Remove thought reaction
   async removeThoughtReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(

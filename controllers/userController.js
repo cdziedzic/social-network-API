@@ -70,6 +70,7 @@ module.exports = {
       res.status(500).json(err);
     }
 },
+// delete friend
 async deleteFriend(req, res) {
   try {
     const user = await User.findOneAndUpdate(
