@@ -35,10 +35,6 @@ const thoughts = [
     thoughtText: 'Just got my first coding job!',
     username: 'user3'
   },
-  {
-    thoughtText: 'I need to lose like 400 lbs',
-    username: 'user1',
-  }
 
 ];
 
